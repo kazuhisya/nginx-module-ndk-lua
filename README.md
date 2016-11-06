@@ -28,7 +28,7 @@ $ sudo yum install -y epel-release
 $ sudo yum install -y http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 $ sudo sed -i -e 's@/packages/@/packages/mainline/@' /etc/yum.repos.d/nginx.repo
 $ sudo curl -L https://copr.fedorainfracloud.org/coprs/khara/nginx-module-ndk-lua/repo/epel-7/khara-nginx-module-ndk-lua-epel-7.repo -o /etc/yum.repos.d/nginx-module-ndk-lua.repo
-$ yum install -y nginx nginx-module-lua
+$ sudo yum install -y nginx nginx-module-lua
 ```
 
 ## Version of the corresponding nginx
