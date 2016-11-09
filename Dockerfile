@@ -7,21 +7,22 @@ ENV TZ="JST-9" \
     LUA_VERSION="0.10.7" \
     NDK_VERSION="0.3.0"
 
-RUN echo $TODAY
-
-RUN yum groups install -y --setopt=tsflags=nodocs "Development tools" && \
-    yum install -y --setopt=tsflags=nodocs epel-release && \
+RUN yum install -y --setopt=tsflags=nodocs epel-release && \
     yum install -y --setopt=tsflags=nodocs \
     GeoIP-devel \
+    gcc \
     gd-devel \
+    gettext \
     libxslt-devel \
     luajit \
     luajit-devel \
+    make \
     openssl-devel \
     pcre-devel \
     perl-ExtUtils-Embed \
     perl-devel \
     redhat-rpm-configa \
+    rpm-build \
     rpmdevtools \
     which \
     yum-utils \
