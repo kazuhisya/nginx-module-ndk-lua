@@ -41,8 +41,14 @@ RUN curl -L http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
     curl -L https://github.com/simpl/ngx_devel_kit/archive/v${NDK_VERSION}.tar.gz \
     -o SOURCES/ngx_devel_kit-${NDK_VERSION}.tar.gz
 
-
 RUN cat nginx-module-ndk-lua/nginx-module-ndk-lua.spec.template \
     | TODAY=$(LANG=c date +"%a %b %e %Y") envsubst '$NGINX_VERSION, $LUA_VERSION, $NDK_VERSION, $MAINTAINER, $TODAY' \
     > SPECS/nginx-module-ndk-lua.spec && \
     rpmbuild -ba SPECS/nginx-module-ndk-lua.spec
+
+RUN cp nginx-module-ndk-lua/nginx.repo /etc/yum.repos.d/ && \
+    yum install -y \
+        --nogpgcheck \
+        --disablerepo=epel \
+        ./RPMS/x86_64/nginx-module-* && \
+    nginx -T -c /root/rpmbuild/nginx-module-ndk-lua/nginx-test.conf

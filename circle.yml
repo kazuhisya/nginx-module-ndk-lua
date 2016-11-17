@@ -13,6 +13,7 @@ dependencies:
 test:
   override:
     - docker run -ti kazuhisya/nginx-module-ndk-lua /bin/true
+    - docker run -ti --entrypoint nginx kazuhisya/nginx-module-ndk-lua -T -c /root/rpmbuild/nginx-module-ndk-lua/nginx-test.conf
   post:
     - docker cp $(docker ps -lq):/root/rpmbuild/RPMS/x86_64 $CIRCLE_ARTIFACTS
 deployment:
