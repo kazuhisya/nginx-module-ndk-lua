@@ -20,13 +20,13 @@ Epoch: %{epoch}
 %endif
 
 %define main_version                 ${NGINX_VERSION}
-%define main_release                 1%{dist}.ngx
+%define main_release                 ${NGINX_RELEASE}%{dist}.ngx
 %define lua_version                  ${LUA_VERSION}
 %define module_lua_version           %{main_version}.%{lua_version}
-%define module_lua_release           1%{?dist}
+%define module_lua_release           ${LUA_RELEASE}%{?dist}
 %define ndk_version                  ${NDK_VERSION}
 %define module_ndk_version           %{main_version}.%{ndk_version}
-%define module_ndk_release           1%{?dist}
+%define module_ndk_release           ${NDK_RELEASE}%{?dist}
 
 %define bdir %{_builddir}/%{name}-%{main_version}
 
@@ -54,7 +54,7 @@ nginx dynamic modules.
 %package module-lua
 Summary:       nginx lua dynamic modules
 Version:       %{main_version}.%{lua_version}
-Release:       1%{?dist}
+Release:       %{module_lua_release}
 URL:           https://github.com/openresty/lua-nginx-module
 Group:         %{_group}
 License:       BSD license
@@ -70,7 +70,7 @@ nginx lua dynamic modules.
 %package module-ndk
 Summary:       nginx ndk dynamic modules
 Version:       %{main_version}.%{ndk_version}
-Release:       1%{?dist}
+Release:       %{module_ndk_release}
 URL:           https://github.com/simpl/ngx_devel_kit
 Group:         %{_group}
 License:       The BSD 3-Clause License

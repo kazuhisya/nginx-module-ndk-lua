@@ -4,8 +4,11 @@ MAINTAINER Kazuhisa Hara <kazuhisya@gmail.com>
 ENV TZ="JST-9" \
     MAINTAINER="Kazuhisa Hara <kazuhisya@gmail.com>" \
     NGINX_VERSION="1.11.6" \
+    NGINX_RELEASE="1" \
     LUA_VERSION="0.10.7" \
-    NDK_VERSION="0.3.0"
+    LUA_RELEASE="2" \
+    NDK_VERSION="0.3.0" \
+    NDK_RELEASE="2"
 
 RUN yum install -y --setopt=tsflags=nodocs epel-release && \
     yum install -y --setopt=tsflags=nodocs \
@@ -42,7 +45,7 @@ RUN curl -L http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
     -o SOURCES/ngx_devel_kit-${NDK_VERSION}.tar.gz
 
 RUN cat nginx-module-ndk-lua/nginx-module-ndk-lua.spec.template \
-    | TODAY=$(LANG=c date +"%a %b %e %Y") envsubst '$NGINX_VERSION, $LUA_VERSION, $NDK_VERSION, $MAINTAINER, $TODAY' \
+    | TODAY=$(LANG=c date +"%a %b %e %Y") envsubst '$MAINTAINER, $NGINX_VERSION, $NGINX_RELEASE, $LUA_VERSION, $LUA_RELEASE, $NDK_VERSION, $NDK_RELEASE, $TODAY' \
     > SPECS/nginx-module-ndk-lua.spec && \
     rpmbuild -ba SPECS/nginx-module-ndk-lua.spec
 
@@ -51,4 +54,5 @@ RUN cp nginx-module-ndk-lua/nginx.repo /etc/yum.repos.d/ && \
         --nogpgcheck \
         --disablerepo=epel \
         ./RPMS/x86_64/nginx-module-* && \
+    yum clean all && \
     nginx -T -c /root/rpmbuild/nginx-module-ndk-lua/nginx-test.conf
