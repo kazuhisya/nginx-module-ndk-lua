@@ -8,13 +8,12 @@
 
 This repository provides unofficial rpmbuild scripts for CentOS 7.
 
-Both are built as dynamic modules conforming to upstream nginx package.
-
 - nginx-module-lua - Embed the Power of Lua into NGINX HTTP servers
     - [openresty/lua-nginx-module: Embed the Power of Lua into NGINX HTTP servers](https://github.com/openresty/lua-nginx-module)
 - nginx-module-ndk - Nginx Development Kit
     - [simpl/ngx_devel_kit: Nginx Development Kit - an Nginx module that adds additional generic tools that module developers can use in their own modules](https://github.com/simpl/ngx_devel_kit)
 
+Both are built as dynamic modules conforming to upstream nginx package.
 
 ## Distro support
 
