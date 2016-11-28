@@ -6,9 +6,9 @@ ENV TZ="JST-9" \
     NGINX_VERSION="1.11.6" \
     NGINX_RELEASE="1" \
     LUA_VERSION="0.10.7" \
-    LUA_RELEASE="2" \
+    LUA_RELEASE="3" \
     NDK_VERSION="0.3.0" \
-    NDK_RELEASE="2"
+    NDK_RELEASE="3"
 
 RUN yum install -y --setopt=tsflags=nodocs epel-release && \
     yum install -y --setopt=tsflags=nodocs \

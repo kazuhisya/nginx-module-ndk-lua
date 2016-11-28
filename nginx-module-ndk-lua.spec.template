@@ -4,7 +4,7 @@
 %define nginx_group nginx
 
 
-%if 0%{?rhel} || 0%{?amzn}
+%if (0%{?rhel} || 0%{?amzn} || 0%{?fedora} >= 18)
 %define _group System Environment/Daemons
 BuildRequires: openssl-devel
 %endif
@@ -14,7 +14,7 @@ BuildRequires: openssl-devel
 BuildRequires: libopenssl-devel
 %endif
 
-%if 0%{?rhel} == 7
+%if (0%{?rhel} == 7 || 0%{?fedora} >= 18)
 %define epoch 1
 Epoch: %{epoch}
 %endif
