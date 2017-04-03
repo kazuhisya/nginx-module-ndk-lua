@@ -3,7 +3,7 @@ MAINTAINER Kazuhisa Hara <kazuhisya@gmail.com>
 
 ENV TZ="JST-9" \
     MAINTAINER="Kazuhisa Hara <kazuhisya@gmail.com>" \
-    NGINX_VERSION="1.11.10" \
+    NGINX_VERSION="1.11.11" \
     NGINX_RELEASE="1" \
     LUA_VERSION="0.10.7" \
     LUA_RELEASE="1" \
@@ -47,6 +47,7 @@ RUN curl -L http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
 RUN cat nginx-module-ndk-lua/nginx-module-ndk-lua.spec.template \
     | TODAY=$(LANG=c date +"%a %b %e %Y") envsubst '$MAINTAINER, $NGINX_VERSION, $NGINX_RELEASE, $LUA_VERSION, $LUA_RELEASE, $NDK_VERSION, $NDK_RELEASE, $TODAY' \
     > SPECS/nginx-module-ndk-lua.spec && \
+    cp -f nginx-module-ndk-lua/*.patch SOURCES/ && \
     rpmbuild -ba SPECS/nginx-module-ndk-lua.spec
 
 RUN cp nginx-module-ndk-lua/nginx.repo /etc/yum.repos.d/ && \
