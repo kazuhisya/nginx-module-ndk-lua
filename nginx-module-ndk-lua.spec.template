@@ -40,7 +40,7 @@ Group:         %{_group}
 Source0:       http://nginx.org/download/nginx-%{main_version}.tar.gz
 Source100:     lua-nginx-module-%{lua_version}.tar.gz
 Source101:     ngx_devel_kit-%{ndk_version}.tar.gz
-Patch0:        defanator_lua-nginx-module_compare_0064324-93f8e8.patch
+Patch0:        lua-nginx-module_compare_4b72493-0459a28.patch
 
 License:       2-clause BSD-like license
 
