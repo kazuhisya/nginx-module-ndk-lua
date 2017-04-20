@@ -24,7 +24,7 @@ RUN yum install -y --setopt=tsflags=nodocs epel-release && \
     pcre-devel \
     perl-ExtUtils-Embed \
     perl-devel \
-    redhat-rpm-configa \
+    redhat-rpm-config \
     rpm-build \
     rpmdevtools \
     which \
