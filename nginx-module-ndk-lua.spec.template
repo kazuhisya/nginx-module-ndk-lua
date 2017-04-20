@@ -6,7 +6,11 @@
 
 %if (0%{?rhel} || 0%{?amzn} || 0%{?fedora} >= 18)
 %define _group System Environment/Daemons
+%if 0%{?fedora} >= 26
+BuildRequires: compat-openssl10-devel
+%else
 BuildRequires: openssl-devel
+%endif
 %endif
 
 %if 0%{?suse_version} == 1315
@@ -102,6 +106,13 @@ tar zxf %{SOURCE101}
 %build
 
 cd %{bdir}
+
+%if 0%{?fedora} >= 26
+export LUAJIT_LIB="/usr/lib64"
+export LUAJIT_INC="/usr/include/luajit-2.1"
+export CFLAGS="-Wno-error"
+%endif
+
 ./configure %{BASE_CONFIGURE_ARGS} %{MODULE_CONFIGURE_ARGS} \
 	--with-cc-opt="%{WITH_CC_OPT}" \
 	--with-debug
