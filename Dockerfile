@@ -5,7 +5,7 @@ ENV TZ="JST-9" \
     MAINTAINER="Kazuhisa Hara <kazuhisya@gmail.com>" \
     NGINX_VERSION="1.13.0" \
     NGINX_RELEASE="1" \
-    LUA_VERSION="0.10.8" \
+    LUA_VERSION="0.10.9rc1" \
     LUA_RELEASE="1" \
     NDK_VERSION="0.3.0" \
     NDK_RELEASE="1"
@@ -48,7 +48,6 @@ COPY / nginx-module-ndk-lua
 RUN cat nginx-module-ndk-lua/nginx-module-ndk-lua.spec.template \
     | TODAY=$(LANG=c date +"%a %b %e %Y") envsubst '$MAINTAINER, $NGINX_VERSION, $NGINX_RELEASE, $LUA_VERSION, $LUA_RELEASE, $NDK_VERSION, $NDK_RELEASE, $TODAY' \
     > SPECS/nginx-module-ndk-lua.spec && \
-    cp -f nginx-module-ndk-lua/*.patch SOURCES/ && \
     rpmbuild -ba SPECS/nginx-module-ndk-lua.spec
 
 RUN cp nginx-module-ndk-lua/nginx.repo /etc/yum.repos.d/ && \

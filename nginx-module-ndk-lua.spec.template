@@ -44,7 +44,6 @@ Group:         %{_group}
 Source0:       http://nginx.org/download/nginx-%{main_version}.tar.gz
 Source100:     lua-nginx-module-%{lua_version}.tar.gz
 Source101:     ngx_devel_kit-%{ndk_version}.tar.gz
-Patch0:        lua-nginx-module_compare_4b72493-0459a28.patch
 
 License:       2-clause BSD-like license
 
@@ -100,7 +99,6 @@ tar --strip-components=1 -zxf %{SOURCE0}
 
 tar zxf %{SOURCE100}
 tar zxf %{SOURCE101}
-%patch0 -p1 -d lua-nginx-module-%{lua_version}
 
 
 %build
