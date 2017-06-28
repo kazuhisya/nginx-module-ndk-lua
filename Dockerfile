@@ -47,8 +47,8 @@ COPY / nginx-module-ndk-lua
 
 RUN cat nginx-module-ndk-lua/nginx-module-ndk-lua.spec.template \
     | TODAY=$(LANG=c date +"%a %b %e %Y") envsubst '$MAINTAINER, $NGINX_VERSION, $NGINX_RELEASE, $LUA_VERSION, $LUA_RELEASE, $NDK_VERSION, $NDK_RELEASE, $TODAY' \
-    > SPECS/nginx-module-ndk-lua.spec && \
-    rpmbuild -ba SPECS/nginx-module-ndk-lua.spec
+    > SPECS/nginx.spec && \
+    rpmbuild -ba SPECS/nginx.spec
 
 RUN cp nginx-module-ndk-lua/nginx.repo /etc/yum.repos.d/ && \
     yum install -y \
