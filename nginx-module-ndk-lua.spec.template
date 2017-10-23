@@ -50,7 +50,7 @@ License:       2-clause BSD-like license
 BuildRoot:     %{_tmppath}/%{name}-%{main_version}-%{main_release}-root
 BuildRequires: zlib-devel
 BuildRequires: pcre-devel
-Requires:      nginx == %{?epoch:%{epoch}:}%{main_version}-%{main_release}
+Requires:      nginx == %{?epoch:%{epoch}:}%{main_version}
 
 %description
 nginx dynamic modules.
@@ -65,7 +65,7 @@ License:       BSD license
 BuildRequires: luajit-devel
 Requires:      luajit
 Requires:      nginx-module-ndk
-Requires:      nginx == %{?epoch:%{epoch}:}%{main_version}-%{main_release}
+Requires:      nginx == %{?epoch:%{epoch}:}%{main_version}
 
 %description module-lua
 nginx lua dynamic modules.
@@ -78,7 +78,7 @@ Release:       %{module_ndk_release}
 URL:           https://github.com/simpl/ngx_devel_kit
 Group:         %{_group}
 License:       The BSD 3-Clause License
-Requires:      nginx == %{?epoch:%{epoch}:}%{main_version}-%{main_release}
+Requires:      nginx == %{?epoch:%{epoch}:}%{main_version}
 
 %description module-ndk
 nginx ndk dynamic modules.
