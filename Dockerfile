@@ -3,11 +3,11 @@ MAINTAINER Kazuhisa Hara <kazuhisya@gmail.com>
 
 ENV TZ="JST-9" \
     MAINTAINER="Kazuhisa Hara <kazuhisya@gmail.com>" \
-    NGINX_VERSION="1.13.9" \
+    NGINX_VERSION="1.13.10" \
     NGINX_RELEASE="1" \
-    LUA_VERSION="0.10.11" \
+    LUA_VERSION="0.10.12rc2" \
     LUA_RELEASE="1" \
-    NDK_VERSION="0.3.0" \
+    NDK_VERSION="0.3.1rc1" \
     NDK_RELEASE="1"
 
 RUN yum install -y --setopt=tsflags=nodocs epel-release && \
