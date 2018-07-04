@@ -6,7 +6,7 @@
 | [![Circle CI](https://circleci.com/gh/kazuhisya/nginx-module-ndk-lua/tree/master.svg?style=shield)](https://circleci.com/gh/kazuhisya/nginx-module-ndk-lua/tree/master) | [![FedoraCopr](https://copr.fedorainfracloud.org/coprs/khara/nginx-module-ndk-lua/package/nginx/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/khara/nginx-module-ndk-lua/) |
 
 
-This repository provides unofficial rpmbuild scripts for CentOS 7.
+This repository provides unofficial rpmbuild scripts for CentOS.
 
 - nginx-module-lua - Embed the Power of Lua into NGINX HTTP servers
     - [openresty/lua-nginx-module: Embed the Power of Lua into NGINX HTTP servers](https://github.com/openresty/lua-nginx-module)
@@ -20,9 +20,9 @@ Both are built as dynamic modules conforming to upstream nginx package.
 Tested working on:
 
 - CentOS 7 x86_64
-    - When you try to build on el7, must enable the EPEL repository.
+    - When you try to build on el7/el6, must enable the EPEL repository.
 
-## Install
+## Install (CentOS7)
 
 ```bash
 $ sudo yum install -y epel-release
