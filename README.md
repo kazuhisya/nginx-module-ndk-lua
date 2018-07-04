@@ -19,7 +19,7 @@ Both are built as dynamic modules conforming to upstream nginx package.
 
 Tested working on:
 
-- CentOS 7 x86_64
+- CentOS 7/ CentOS 6 x86_64
     - When you try to build on el7/el6, must enable the EPEL repository.
 
 ## Install (CentOS7)
