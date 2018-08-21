@@ -1,0 +1,40 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    working_directory: ~/kazuhisya/nginx-module-ndk-lua
+    environment:
+      CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
+      CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+    steps:
+      - checkout
+      - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
+      - run: docker build -t kazuhisya/nginx-module-ndk-lua -f Dockerfile .
+      - run: docker run -ti kazuhisya/nginx-module-ndk-lua /bin/true
+      - run: docker run -ti --entrypoint nginx kazuhisya/nginx-module-ndk-lua -T -c /root/rpmbuild/nginx-module-ndk-lua/nginx-test.conf
+      - run: docker cp $(docker ps -lq):/root/rpmbuild/RPMS/x86_64 $CIRCLE_ARTIFACTS
+      - run: docker cp $(docker ps -lq):/root/rpmbuild/SRPMS $CIRCLE_ARTIFACTS
+      - store_artifacts:
+          path: /tmp/circleci-artifacts
+  deploy:
+    machine: true
+    working_directory: ~/kazuhisya/nginx-module-ndk-lua
+    environment:
+      CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
+      CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+    steps:
+      - checkout
+      - run: docker run -e COPR_LOGIN=$COPR_LOGIN -e COPR_USERNAME=$COPR_USERNAME -e COPR_TOKEN=$COPR_TOKEN --entrypoint "/root/rpmbuild/nginx-module-ndk-lua/copr-deploy.sh" kazuhisya/nginx-module-ndk-lua
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+
+
