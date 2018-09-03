@@ -24,6 +24,7 @@ jobs:
       CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
     steps:
       - checkout
+      - run: docker build -t kazuhisya/nginx-module-ndk-lua -f Dockerfile .
       - run: docker run -e COPR_LOGIN=$COPR_LOGIN -e COPR_USERNAME=$COPR_USERNAME -e COPR_TOKEN=$COPR_TOKEN --entrypoint "/root/rpmbuild/nginx-module-ndk-lua/copr-deploy.sh" kazuhisya/nginx-module-ndk-lua
 workflows:
   version: 2
